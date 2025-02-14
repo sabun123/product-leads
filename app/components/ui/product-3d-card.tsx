@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { use3DEffect } from '@/app/hooks/use-3d-effect';
+import { use3DEffect } from '../../hooks/use-3d-effect';
 
 interface Product3DCardProps {
   children: React.ReactNode;

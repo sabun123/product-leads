@@ -13,6 +13,8 @@ import { WaitlistForm } from './components/ui/waitlist-form'
 import { ParallaxSection } from './components/ui/parallax-section'
 import { HoverCard } from './components/ui/hover-card'
 import { FloatingImage } from './components/ui/floating-image'
+import { Feature3DShowcase } from './components/ui/feature-3d-showcase'
+import { PerspectiveContainer } from './components/ui/perspective-container'
 
 export default function Page() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -121,6 +123,52 @@ export default function Page() {
             </div>
           </section>
         </ParallaxSection>
+
+        {/* 3D Product Showcase Section */}
+        <section className="py-32 relative overflow-hidden">
+          <PerspectiveContainer depth={50} className="w-full">
+            <div className="container px-4 max-w-7xl mx-auto space-y-24">
+              <Feature3DShowcase
+                image="https://images.unsplash.com/photo-1584636778193-ab37de4a4c1f?w=800&q=80"
+                title="Precision Engineering"
+                description="Experience unparalleled accuracy in prayer timing with our advanced calculation algorithms."
+                features={[
+                  "Location-based prayer time calculations",
+                  "Automatic daylight savings adjustment",
+                  "Customizable calculation methods",
+                  "High-precision time synchronization"
+                ]}
+                direction="left"
+              />
+
+              <Feature3DShowcase
+                image="https://images.unsplash.com/photo-1557913107-5b0c393835bc?w=800&q=80"
+                title="Smart Display Technology"
+                description="Clarity meets beauty with our adaptive display technology."
+                features={[
+                  "Auto-brightness adjustment",
+                  "Anti-glare coating",
+                  "Wide viewing angle",
+                  "Energy-efficient LED display"
+                ]}
+                direction="right"
+              />
+
+              <Feature3DShowcase
+                image="https://images.unsplash.com/photo-1602847213180-50e43a80bfdf?w=800&q=80"
+                title="Seamless Integration"
+                description="Connect your prayer clock to your digital ecosystem."
+                features={[
+                  "Mobile app connectivity",
+                  "Smart home integration",
+                  "Cloud-based settings backup",
+                  "Over-the-air updates"
+                ]}
+                direction="left"
+              />
+            </div>
+          </PerspectiveContainer>
+        </section>
 
         {/* Product Gallery Section (New) */}
         <section className="py-32 relative overflow-hidden">
