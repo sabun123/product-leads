@@ -2,23 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 15, 23, 42;
-  --background-end-rgb: 30, 41, 59;
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      rgb(var(--background-start-rgb)),
-      rgb(var(--background-end-rgb))
-    );
-  min-height: 100vh;
-}
-
 @layer base {
+  :root {
+    /* Updated color scheme */
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+    
+    --card: 222 47% 7%;
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 222 47% 6%;
+    --popover-foreground: 210 40% 98%;
+    
+    --primary: 142 72% 50%;
+    --primary-foreground: 144 80% 98%;
+    
+    --secondary: 217 32% 12%;
+    --secondary-foreground: 210 40% 98%;
+    
+    --muted: 217 32% 12%;
+    --muted-foreground: 215 20.2% 65.1%;
+    
+    --accent: 217 32% 15%;
+    --accent-foreground: 210 40% 98%;
+    
+    --border: 217 32% 14%;
+    --input: 217 32% 14%;
+    --ring: 142.1 70.6% 45.3%;
+
+    /* Custom gradients */
+    --gradient-1: linear-gradient(to right bottom, rgb(0, 219, 139), rgb(0, 152, 96));
+    --gradient-2: linear-gradient(to right bottom, rgb(37, 47, 63), rgb(20, 24, 31));
+    --gradient-3: radial-gradient(circle at top left, rgb(16, 185, 129), transparent 50%);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
   html {
     scroll-behavior: smooth;
   }
@@ -34,6 +60,28 @@ body {
     -webkit-box-shadow: 0 0 0px 1000px rgb(var(--background-start-rgb)) inset;
     transition: background-color 5000s ease-in-out 0s;
   }
+}
+
+.noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(16, 185, 129, 0.15), transparent 40%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.mask-radial {
+  mask-image: radial-gradient(circle at center, black, transparent 70%);
 }
 
 @layer components {
@@ -58,4 +106,159 @@ body {
   .animation-delay-4000 {
     animation-delay: 4s;
   }
+  
+  .text-shadow {
+    text-shadow: rgb(0 0 0 / 56%) 0px 3px 12px;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300;
+  }
+  
+  .bg-grid {
+    background-image: linear-gradient(to right, rgb(55 65 81 / 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(55 65 81 / 0.1) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  
+  /* Custom utilities */
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/[0.02] border border-white/[0.05] shadow-[0_8px_32px_0_rgba(0,0,0,0.36)];
+  }
+
+  .gradient-border {
+    position: relative;
+    background-clip: padding-box;
+    border: 1px solid transparent;
+  }
+
+  .gradient-border::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    z-index: -1;
+    border-radius: inherit;
+    background: linear-gradient(
+      to right bottom,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.05)
+    );
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at 50% 0%,
+      rgba(16, 185, 129, 0.15),
+      rgba(0, 0, 0, 0) 50%
+    );
+    opacity: 0.8;
+    z-index: 0;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+  }
+
+  .bg-grid-dark {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+  }
+
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Enhanced form styles */
+  .input-glow {
+    @apply transition-shadow duration-300;
+  }
+
+  .input-glow:focus {
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.1),
+                0 0 0 4px rgba(16, 185, 129, 0.1);
+  }
+
+  /* Card hover effects */
+  .hover-card-animation {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .hover-card-animation:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Custom animations */
+  @keyframes shimmer {
+    from {
+      mask-position: 150%;
+    }
+    
+    to {
+      mask-position: -50%;
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+    mask-image: linear-gradient(
+      -60deg,
+      black 30%,
+      rgba(0, 0, 0, 0.8) 50%,
+      black 70%
+    );
+    mask-size: 200%;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .perspective-2000 {
+    perspective: 2000px;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  /* 3D Card effects */
+  .card-shadow-hover {
+    @apply transition-all duration-300;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05),
+                0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .card-shadow-hover:hover {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1),
+                0 20px 25px -5px rgba(0, 0, 0, 0.2),
+                0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Depth layers for 3D stacking */
+  .z-1 { transform: translateZ(10px); }
+  .z-2 { transform: translateZ(20px); }
+  .z-3 { transform: translateZ(30px); }
+  .z-4 { transform: translateZ(40px); }
+  .z-5 { transform: translateZ(50px); }
 }
