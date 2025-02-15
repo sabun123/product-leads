@@ -2,12 +2,17 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-interface BlurImageProps extends Omit<React.ComponentProps<typeof Image>, 'src' | 'alt'> {
+interface BlurImageProps {
   src: string;
   alt: string;
+  className?: string;
+  height?: number;
+  width?: number;
+  fill?: boolean;
+  priority?: boolean;
 }
 
-export default function BlurImage({ src, alt, className = '', ...props }: BlurImageProps) {
+export default function BlurImage({ src, alt, className = '', height, width, fill = false, priority = false }: BlurImageProps) {
   const [isLoading, setLoading] = useState(true);
 
   return (
@@ -20,7 +25,10 @@ export default function BlurImage({ src, alt, className = '', ...props }: BlurIm
           ${isLoading ? 'scale-110 blur-2xl' : 'scale-100 blur-0'}
         `}
         onLoadingComplete={() => setLoading(false)}
-        {...props}
+        fill={fill}
+        width={!fill ? width : undefined}
+        height={!fill ? height : undefined}
+        priority={priority}
       />
       <AnimatePresence>
         {isLoading && (

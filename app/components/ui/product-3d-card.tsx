@@ -38,6 +38,9 @@ export function Product3DCard({
       style={{
         transform,
         transition,
+        boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)',
+        borderRadius: '10px',
+        overflow: 'hidden',
       }}
       onMouseMove={onMouseMove}
       onMouseEnter={onMouseEnter}
@@ -45,6 +48,20 @@ export function Product3DCard({
       initial={false}
     >
       {children}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1))',
+          mixBlendMode: 'overlay',
+        }}
+      />
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent 70%)',
+          mixBlendMode: 'overlay',
+        }}
+      />
     </motion.div>
   );
 }

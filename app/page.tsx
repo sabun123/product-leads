@@ -111,7 +111,7 @@ export default function Page() {
               >
                 <div className="relative max-w-6xl mx-auto">
                   <FloatingImage
-                    src="https://images.unsplash.com/photo-1584636778193-ab37de4a4c1f?w=1400&q=80"
+                    src="https://images.unsplash.com/photo-1578337834280-0cbc7fcec092?w=1400&q=80"
                     alt="Modern Digital Prayer Clock"
                     priority
                   />
@@ -129,7 +129,7 @@ export default function Page() {
           <PerspectiveContainer depth={50} className="w-full">
             <div className="container px-4 max-w-7xl mx-auto space-y-24">
               <Feature3DShowcase
-                image="https://images.unsplash.com/photo-1584636778193-ab37de4a4c1f?w=800&q=80"
+                image="https://images.unsplash.com/photo-1646724684583-764bb3f47c1f?w=800&q=80"
                 title="Precision Engineering"
                 description="Experience unparalleled accuracy in prayer timing with our advanced calculation algorithms."
                 features={[
@@ -142,7 +142,7 @@ export default function Page() {
               />
 
               <Feature3DShowcase
-                image="https://images.unsplash.com/photo-1557913107-5b0c393835bc?w=800&q=80"
+                image="https://images.unsplash.com/photo-1646724684583-764bb3f47c1f"
                 title="Smart Display Technology"
                 description="Clarity meets beauty with our adaptive display technology."
                 features={[
@@ -155,7 +155,7 @@ export default function Page() {
               />
 
               <Feature3DShowcase
-                image="https://images.unsplash.com/photo-1602847213180-50e43a80bfdf?w=800&q=80"
+                image="https://images.unsplash.com/photo-1646724684583-764bb3f47c1f"
                 title="Seamless Integration"
                 description="Connect your prayer clock to your digital ecosystem."
                 features={[
