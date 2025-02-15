@@ -405,7 +405,7 @@ export default function Page() {
         <div className="container px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="text-sm text-muted-foreground">
-              © 2024 PrayerClock. All rights reserved.
+              © 2025 PrayerClock. All rights reserved.
             </div>
             <div className="flex gap-6">
               <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Privacy</a>
