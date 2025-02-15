@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 
 export function ParallaxSection({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);

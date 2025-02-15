@@ -1,4 +1,4 @@
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 interface Particle {
@@ -10,7 +10,6 @@ interface Particle {
 
 export function ParticleField() {
   const [particles, setParticles] = useState<Particle[]>([]);
-  const { scrollY } = useScroll();
   
   const generateParticles = (count: number) => {
     return Array.from({ length: count }, () => ({

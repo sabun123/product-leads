@@ -41,13 +41,13 @@ export function Feature3DShowcase({
     [0, 1, 1, 0]
   );
 
-  const rotate = useTransform(
-    scrollYProgress,
-    [0, 0.5, 1],
-    direction === 'left'
-      ? [-10, 0, -10]
-      : [10, 0, 10]
-  );
+  // const rotate = useTransform(
+  //   scrollYProgress,
+  //   [0, 0.5, 1],
+  //   direction === 'left'
+  //     ? [-10, 0, -10]
+  //     : [10, 0, 10]
+  // );
 
   return (
     <motion.div

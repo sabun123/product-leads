@@ -1,12 +1,10 @@
 'use client'
 
-import Image from 'next/image'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowRightIcon, ClockIcon, MoonIcon, SunIcon, CheckIcon } from '@heroicons/react/24/outline'
+import { motion } from 'framer-motion'
+import { ClockIcon, MoonIcon, SunIcon, CheckIcon } from '@heroicons/react/24/outline'
 import { useRef } from 'react'
 import { CustomCursor } from './components/ui/custom-cursor'
 import { Gradient } from './components/ui/gradient'
-import BlurImage from './components/ui/blur-image'
 import { ScrollIndicator } from './components/ui/scroll-indicator'
 import { ParticleField } from './components/ui/particle-field'
 import { WaitlistForm } from './components/ui/waitlist-form'
@@ -18,10 +16,6 @@ import { PerspectiveContainer } from './components/ui/perspective-container'
 
 export default function Page() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  })
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-background text-foreground" ref={containerRef}>
@@ -290,7 +284,7 @@ export default function Page() {
                 Loved by the Community
               </h2>
               <p className="text-xl text-muted-foreground">
-                Here's what early testers are saying about PrayerClock
+                {`Here's what early testers are saying about PrayerClock`}
               </p>
             </motion.div>
 
